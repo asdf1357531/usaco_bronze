@@ -1,5 +1,5 @@
 import java.util.*;
-public class socialDistancing1 {
+public class u202003_q1_socialDistancing1 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
