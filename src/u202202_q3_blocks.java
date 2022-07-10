@@ -1,3 +1,7 @@
+/*
+http://usaco.org/index.php?page=viewproblem2&cpid=1205
+*/
+
 import java.util.*;
 public class u202202_q3_blocks {
     /* public static void setUpPerms(){
@@ -19,24 +23,93 @@ public class u202202_q3_blocks {
             }
         }
     }*/
+    public static void printArray(int[] arr){
+        for(int i = 0; i < arr.length; i++){
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
 
-    static int[][] perms = {
-        {0, 1, 2, 3}, {0, 1, 3, 2}, {0, 2, 1, 3}, {0, 2, 3, 1}, {0, 3, 1, 2}, {0, 3, 2, 1},
-        {1, 0, 2, 3}, {1, 0, 3, 2}, {1, 2, 0, 3}, {1, 2, 3, 0}, {1, 3, 0, 2}, {1, 3, 2, 0},
-        {2, 0, 1, 3}, {2, 0, 3, 1}, {2, 1, 0, 3}, {2, 1, 3, 0}, {2, 3, 0, 1}, {2, 3, 1, 0},
-        {3, 0, 1, 2}, {3, 0, 2, 1}, {3, 1, 0, 2}, {3, 1, 2, 0}, {3, 2, 0, 1}, {3, 2, 1, 0}
-    };
+    public static void printNestedArray(int[][] arr){
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] != null)
+                printArray(arr[i]);
+            else
+                System.out.println();
+            System.out.println(i);
+        }
+    }
+
+    public static int factorial(int n){
+        if(n <= 1){
+            return 1;
+        }
+        return n * factorial((n - 1));
+    }
+
+    public static int[] concat(int[] arr1, int[] arr2){
+        int[] fArr = new int[arr1.length + arr2.length];
+        for(int i = 0; i < arr1.length; i++){
+            fArr[i] = arr1[i];
+        }
+        for(int i = arr1.length; i < arr1.length + arr2.length; i++){
+            fArr[i] = arr2[i - arr1.length];
+        }
+        return fArr;
+    }
+
+    public static int[] slicing(int[] arr, int a, int b){
+        int[] fArr = new int[b - a];
+        for(int i = a; i < b; i++){
+            fArr[i - a] = arr[i];
+        }
+        return fArr;
+    }
+
+    public static void permute(int[] prefix, int[] remaining){
+        if(remaining.length == 0){
+            perms[progress] = prefix;
+            progress++;
+            return;
+        }
+
+        for(int i = 0; i < remaining.length; i++){
+            permute(concat(prefix, new int[]{remaining[i]}), concat(slicing(remaining, 0, i), slicing(remaining, i + 1, remaining.length)));
+        }
+    }
+
+    public static int[] incArr(int n){
+        int[] fArr = new int[n];
+        for(int i = 0; i < n; i++){
+            fArr[i] = i;
+        }
+        return fArr;
+    }
+
+    public static void setUpPerms(int n){
+        int f = factorial(n);
+        perms = new int[f][n];
+        permute(new int[]{}, incArr(n));
+    }
+
+    static int progress = 0;
+
+    static int[][] perms;
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
+        setUpPerms(4);
 
-        int[][] blocks = new int[4][26];
+        ArrayList<HashSet<String>> blocks = new ArrayList<>();
+
         for(int i = 0; i < 4; i++){
             String line = in.next();
+            HashSet<String> block = new HashSet<String>();
             for(int k = 0; k < 6; k++){
-                int id = line.charAt(k) - 'A';
-                blocks[i][id] = 1;
+                block.add(line.charAt(k) + "");
             }
+            blocks.add(block);
         }
 
         for(int i = 0; i < n; i++){
@@ -46,8 +119,7 @@ public class u202202_q3_blocks {
             for(int[] p: perms){
                 success = true;
                 for(int x = 0; x < word.length(); x++){
-                    int id = word.charAt(x) - 'A';
-                    if(blocks[p[x]][id] == 0){
+                    if(!blocks.get(p[x]).contains(word.charAt(x) + "")){//blocks
                         success = false;
                         break;
                     }
@@ -56,44 +128,5 @@ public class u202202_q3_blocks {
             }
             System.out.println(success ? "YES" : "NO");
         }
-
-        /*
-        for(int i = 0; i < 4; i++){
-            blocks[i] = in.next().toCharArray();
-        }
-
-        setUpPerms();
-
-        for(int i = 0; i < n; i++){
-            boolean permFound = false;
-            String iword = in.next();
-            char[] word = iword.toCharArray();
-
-            outerloop:
-            for(int j = 0; j < perms[word.length].length; j++){
-                String nperm = "";
-
-                for(int k = 0; k < word.length; k++){
-                    nperm += "" + perms[word.length][j][k];
-                    System.out.println(i + " : " + j + " : " + k);
-                }
-                System.out.println(" : " + nperm);
-
-                if(iword.equals(nperm)){
-                    permFound = true;
-                    break outerloop;
-                }
-
-            }
-
-            if(permFound) {
-                System.out.println("YES");
-            }
-            else{
-                System.out.println("NO");
-            }
-        }
-
-         */
     }
 }
