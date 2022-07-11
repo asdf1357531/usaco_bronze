@@ -4,25 +4,6 @@ http://usaco.org/index.php?page=viewproblem2&cpid=1205
 
 import java.util.*;
 public class u202202_q3_blocks {
-    /* public static void setUpPerms(){
-        perms[1] = new char[24][1];
-        perms[2] = new char[432][2];
-        for(int a = 0; a < 6; a++) {
-            for (int i = 0; i < 4; i++) {
-                perms[1][a * 4 + i][0] = blocks[i][a];
-                for (int b = 0; b < 6; b++) {
-                    for(int j = i + 1; j < i + 4; j = j % 4) {
-                        perms[2][a * 72 + b * 12 + i * 3 + j][0] = blocks[a];
-
-                        for (int c = 0; c < 6; c++) {
-                            for (int d = 0; d < 6; d++) {
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }*/
     public static void printArray(int[] arr){
         for(int i = 0; i < arr.length; i++){
             System.out.print(arr[i] + " ");
