@@ -1,2 +1,3 @@
 # usaco
-Lele's USACO
+Lele's USACO.
+
