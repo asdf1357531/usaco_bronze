@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.*;
 
 class socialDistancing1 {
+    //add 3 cows
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
@@ -10,6 +11,7 @@ class socialDistancing1 {
         int hd1 = 1;
         int hd2 = 1;
         int hda = 1;
+
         int beg = -1;
         for (int i = 0; i < n; i++) {
             boolean cchar = s.charAt(i) == '1';
