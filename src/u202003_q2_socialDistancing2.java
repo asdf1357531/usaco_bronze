@@ -22,7 +22,7 @@ public class u202003_q2_socialDistancing2 {
 
 
         int[] cows = new int[m];
-        for(int i = 1; i < m; i++){cows[i] = -1;}
+        Arrays.fill(cows, -1);
 
         //If no healthy cows are found, radius will stay at 1000000
         int r = m - 1;
