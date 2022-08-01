@@ -46,17 +46,16 @@ public class u202003_q3_cowntactTracing {
                     for(int i = 0; i < T; i++) {
                         int a = record.get(i)[1];
                         int b = record.get(i)[2];
+                        int preState = ccows[b];
                         //If one of the cows is infected and has not been "turned off", set the other to infected
                         if(ccows[a] == 1 && handShakes[a] < k){
                             ccows[b] = 1;
+                            handShakes[a]++;
                         }
-                        if(ccows[b] == 1 && handShakes[b] < k){
+                        if(preState == 1 && handShakes[b] < k){
                             ccows[a] = 1;
+                            handShakes[b]++;
                         }
-
-                        //Add handshakes
-                        handShakes[a]++;
-                        handShakes[b]++;
                     }
                     //Update X Y Z if original cow sequence equals current cow sequence
                     if(Arrays.equals(cows, ccows)){
@@ -72,7 +71,7 @@ public class u202003_q3_cowntactTracing {
         }
         String out = x + " " + y + " ";
         //No cow can have more than T handshakes, thus if Z equals T, there is no difference when it is infinity
-        if(z == T){
+        if(z >= T){
             out += "Infinity";
         } else {
             out += z;
