@@ -1,5 +1,8 @@
 //http://usaco.org/index.php?page=viewproblem2&cpid=1013
-
+//10 13 5 6 2 10 || 1 10 9 8 7 5 6 4 3 2
+//5 1 1 3 2 5    || 3 5 4 1 2
+//7 2 2 5 3 7    || 1 2 4 3 5 7 6
+//8 10 1 6 3 8   || 2 1 4 3 6 5 8 7
 import java.util.*;
 public class u202002_q3_swapitySwap {
     public static void main(String[] args){
@@ -47,7 +50,7 @@ public class u202002_q3_swapitySwap {
             while(K % swaps[i] --> 0){
                 j = cows[j];
             }
-            System.out.println(j);
+            System.out.print(j + " ");
         }
     }
 }
