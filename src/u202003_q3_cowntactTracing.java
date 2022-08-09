@@ -31,13 +31,11 @@ public class u202003_q3_cowntactTracing {
         int y = T + 1;//The smallest possible value of K
         int z = 0;//The largest possible value of K
 
-
         for(int c = 1; c < N; c++){
             //If the Cth cow is not infected in the original cow sequence, it cannot be patient zero
             if (cows[c] == 1){
                 boolean notAdded = true;//Makes sure patient zero is not double counted
                 for(int k = 0; k < T + 1; k++){
-
                     int[] handShakes = new int[N + 1];
                     int[] ccows = new int[N + 1];
                     //Set Patient Zero to infected

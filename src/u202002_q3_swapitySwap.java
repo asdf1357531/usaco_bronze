@@ -25,6 +25,7 @@ public class u202002_q3_swapitySwap {
             int buffer = cows[i];
             cows[i] = cows[b1 + b2 - i];
             cows[b1 + b2 + - i] = buffer;
+            Collections.swap(Arrays.asList(cows), cows[i], cows[b1 + b2 - i]);
         }
 
         for(int i = a1; i < (a1 + a2 - 1)/2 + 1; i++){
