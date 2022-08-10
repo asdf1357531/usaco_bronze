@@ -1,3 +1,5 @@
+//
+
 import java.util.*;
 public class u202212_q1_lonelyPhoto {
 
