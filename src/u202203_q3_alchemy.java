@@ -17,15 +17,20 @@ public class u202203_q3_alchemy {
     public static boolean metalsLeft(int n){
         if(recipes[n] != null){
             for(int i = 0; i < recipes[n].length; i++){
-                if(metals[i] > 0){
-                    metals[i]--;
-                    return true;
-                } else {
-                    metalsLeft(i);
+                System.out.print("N: " + n + " || I: " + i + " || ");
+                for(int j = 1; j < metals.length; j++){
+                    System.out.print(metals[j] + " ");
                 }
+                System.out.println();
+                if(metals[recipes[n][i]] > 0){
+                    metals[recipes[n][i]]--;
+                    continue;
+                } else {
+                    if(metalsLeft(recipes[n][i]))continue;
+                }
+                return false;
             }
-        } else {
-            return false;
+            return true;
         }
         return false;
     }
@@ -49,6 +54,6 @@ public class u202203_q3_alchemy {
             metals[n]++;
         }
 
-        System.out.println(metals[n] - 1);
+        System.out.println(metals[n]);
     }
 }
