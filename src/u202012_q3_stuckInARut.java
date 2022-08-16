@@ -1,5 +1,3 @@
-//http://usaco.org/index.php?page=viewproblem2&cpid=1061
-
 import java.util.*;
 public class u202012_q3_stuckInARut {
     public static void main(String[] args){
@@ -57,8 +55,8 @@ public class u202012_q3_stuckInARut {
         for(int i = 0; i < northCows.size(); i++){
             int x = northCows.get(i)[0];
             int y = northCows.get(i)[1];
-            int idn = northCows.get(i)[2];
             for(int j = 0; j < eastCows.size(); j++){
+                int idn = northCows.get(i)[2];
                 int a = eastCows.get(j)[0];
                 int b = eastCows.get(j)[1];
                 int ide = eastCows.get(j)[2];
@@ -115,15 +113,15 @@ public class u202012_q3_stuckInARut {
                 else {
                     System.out.println("Case 2");
                     if(dirs[nonCollidingCow][0] == 1){
-                        if(eastCows.get(dirs[nonCollidingCow][1])[0] + t > y){
+                        if(eastCows.get(dirs[nonCollidingCow][1])[0] + collided[nonCollidingCow] > y){
                             System.out.println("Case 2.1");
                             collided[collidingCow] = t;
                         } else {
                             System.out.println("Case Failed");
                         }
                     } else {
-                        if(northCows.get(dirs[nonCollidingCow][1])[1] + t > x){
-                            System.out.println("Case 2.2");
+                        if(northCows.get(dirs[nonCollidingCow][1])[1] + collided[nonCollidingCow] > x){
+                            System.out.println("Case 2.2: " + (northCows.get(dirs[nonCollidingCow][1])[1] + t));
                             collided[collidingCow] = t;
                         } else {
                             System.out.println("Case Failed");
