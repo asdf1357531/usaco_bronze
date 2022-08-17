@@ -113,18 +113,18 @@ public class u202012_q3_stuckInARut {
                 else {
                     System.out.println("Case 2");
                     if(dirs[nonCollidingCow][0] == 1){
-                        if(eastCows.get(dirs[nonCollidingCow][1])[0] + collided[nonCollidingCow] > y){
+                        if(eastCows.get(dirs[nonCollidingCow][1])[0] + collided[nonCollidingCow] > x){
                             System.out.println("Case 2.1");
                             collided[collidingCow] = t;
                         } else {
-                            System.out.println("Case Failed");
+                            System.out.println("Case 2.1 Failed");
                         }
                     } else {
-                        if(northCows.get(dirs[nonCollidingCow][1])[1] + collided[nonCollidingCow] > x){
+                        if(northCows.get(dirs[nonCollidingCow][1])[1] + collided[nonCollidingCow] > y){
                             System.out.println("Case 2.2: " + (northCows.get(dirs[nonCollidingCow][1])[1] + t));
                             collided[collidingCow] = t;
                         } else {
-                            System.out.println("Case Failed");
+                            System.out.println("Case 2.2 Failed");
                         }
                     }
                 }
